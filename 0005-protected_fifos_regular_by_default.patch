@@ -1,0 +1,24 @@
+From 97de36b534dff1bd6976d4416db2adc20d16bd17 Mon Sep 17 00:00:00 2001
+From: Levente Polyak <levente@leventepolyak.net>
+Date: Sun, 4 Nov 2018 18:48:53 +0100
+Subject: [PATCH] enable protected_{fifos,regular} by default
+
+---
+ fs/namei.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/fs/namei.c b/fs/namei.c
+index 65f3cf6aaa6e6..c34c2be24c6a1 100644
+--- a/fs/namei.c
++++ b/fs/namei.c
+@@ -990,8 +990,8 @@ static inline void put_link(struct nameidata *nd)
+ 
+ int sysctl_protected_symlinks __read_mostly = 1;
+ int sysctl_protected_hardlinks __read_mostly = 1;
+-int sysctl_protected_fifos __read_mostly;
+-int sysctl_protected_regular __read_mostly;
++int sysctl_protected_fifos __read_mostly = 2;
++int sysctl_protected_regular __read_mostly = 2;
+ 
+ /**
+  * may_follow_link - Check symlink following for unsafe situations
